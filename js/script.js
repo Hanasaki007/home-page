@@ -389,7 +389,8 @@
       deleteBtn.className = 'todo-delete';
       deleteBtn.title = '删除';
       deleteBtn.innerHTML = '&times;';
-      deleteBtn.addEventListener('click', async () => {
+      deleteBtn.addEventListener('click', async (e) => {
+        e.stopPropagation();
         todos = todos.filter((t) => t.id !== todo.id);
         renderTodos();
         await storageSet({ todos });
