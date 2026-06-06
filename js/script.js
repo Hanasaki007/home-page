@@ -166,9 +166,12 @@
     const el = $('#background');
     if (imgDataUrl) {
       el.style.backgroundImage = `url(${imgDataUrl})`;
+      el.style.backgroundSize = 'cover';
+      el.style.backgroundPosition = 'center';
       el.classList.add('has-image');
     } else {
       el.style.backgroundImage = '';
+      el.style.backgroundSize = '';
       el.classList.remove('has-image');
     }
   }
