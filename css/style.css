@@ -14,7 +14,11 @@
   --text-secondary: rgba(255, 255, 255, 0.7);
   --radius: 16px;
   --radius-sm: 12px;
-  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -75,6 +79,51 @@ body::-webkit-scrollbar-thumb:hover {
 #background.has-image {
   background-size: cover;
   background-position: center;
+}
+
+#background[data-theme="ocean"] {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(16, 130, 212, 0.5) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(16, 180, 200, 0.35) 0%, transparent 45%),
+    radial-gradient(ellipse at 60% 80%, rgba(16, 70, 180, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 90%, rgba(16, 130, 160, 0.3) 0%, transparent 40%),
+    linear-gradient(160deg, #060d1a 0%, #0a1e3d 40%, #0c1a30 70%, #060d1a 100%);
+}
+
+#background[data-theme="sunset"] {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(212, 82, 52, 0.5) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(212, 138, 52, 0.35) 0%, transparent 45%),
+    radial-gradient(ellipse at 60% 80%, rgba(212, 52, 100, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 90%, rgba(180, 60, 120, 0.3) 0%, transparent 40%),
+    linear-gradient(160deg, #1a0b0e 0%, #3d1a10 40%, #28100f 70%, #1a0b0e 100%);
+}
+
+#background[data-theme="forest"] {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(30, 150, 80, 0.5) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(52, 180, 120, 0.35) 0%, transparent 45%),
+    radial-gradient(ellipse at 60% 80%, rgba(20, 100, 60, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 90%, rgba(40, 130, 90, 0.3) 0%, transparent 40%),
+    linear-gradient(160deg, #0a1a0e 0%, #102a18 40%, #0e2016 70%, #0a1a0e 100%);
+}
+
+#background[data-theme="aurora"] {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(52, 180, 212, 0.5) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(130, 52, 212, 0.4) 0%, transparent 45%),
+    radial-gradient(ellipse at 60% 80%, rgba(52, 212, 180, 0.35) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 90%, rgba(100, 52, 212, 0.3) 0%, transparent 40%),
+    linear-gradient(160deg, #0a0e1a 0%, #101a3d 40%, #0e1528 70%, #0a0e1a 100%);
+}
+
+#background[data-theme="warm"] {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(212, 160, 52, 0.5) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(212, 100, 52, 0.35) 0%, transparent 45%),
+    radial-gradient(ellipse at 60% 80%, rgba(180, 130, 52, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 90%, rgba(200, 80, 60, 0.3) 0%, transparent 40%),
+    linear-gradient(160deg, #1a1208 0%, #3d2a10 40%, #281c0c 70%, #1a1208 100%);
 }
 
 .glass {
@@ -153,14 +202,15 @@ body::-webkit-scrollbar-thumb:hover {
 
 .time {
   font-size: clamp(72px, 12vw, 120px);
-  font-weight: 100;
-  letter-spacing: 6px;
+  font-weight: 700;
+  letter-spacing: 4px;
   line-height: 1;
-  background: linear-gradient(135deg, #ffffff 0%, rgba(180, 200, 255, 0.9) 50%, rgba(220, 180, 255, 0.85) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 2px 12px rgba(150, 130, 255, 0.35));
+  color: rgba(255, 255, 255, 0.45);
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.6);
+  paint-order: stroke fill;
+  text-shadow:
+    0 0 40px rgba(255, 255, 255, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .date {
@@ -516,7 +566,7 @@ body::-webkit-scrollbar-thumb:hover {
   transition: var(--transition);
 }
 
-.modal-field input:focus {
+.modal-field input:focus-visible {
   border-color: rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.12);
 }
@@ -568,6 +618,7 @@ body::-webkit-scrollbar-thumb:hover {
   min-width: 160px;
   z-index: 200;
   animation: scaleIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overscroll-behavior: contain;
 }
 
 .settings-dropdown.hidden {
@@ -598,6 +649,7 @@ body::-webkit-scrollbar-thumb:hover {
   padding: 6px;
   min-width: 180px;
   animation: scaleIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overscroll-behavior: contain;
 }
 
 .context-menu.hidden {
@@ -665,6 +717,7 @@ body::-webkit-scrollbar-thumb:hover {
   align-items: center;
   justify-content: center;
   animation: fadeIn 0.2s ease-out;
+  overscroll-behavior: contain;
 }
 
 .game-modal.hidden {
@@ -810,6 +863,7 @@ body::-webkit-scrollbar-thumb:hover {
   transform: translateX(0);
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
+  overscroll-behavior: contain;
 }
 
 .todo-panel.hidden {
@@ -868,7 +922,7 @@ body::-webkit-scrollbar-thumb:hover {
   transition: var(--transition);
 }
 
-.todo-input-row input:focus {
+.todo-input-row input:focus-visible {
   border-color: rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.12);
 }
@@ -1149,6 +1203,15 @@ body.high-performance .modal {
 
 body.high-performance .bookmark-actions {
   transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @media (max-width: 480px) {

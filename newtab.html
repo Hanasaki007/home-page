@@ -10,8 +10,8 @@
   <div id="background"></div>
 
   <div class="top-left-bar">
-    <button id="game-btn" title="五子棋">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <button id="game-btn" title="五子棋" aria-label="五子棋">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="10"></circle>
         <circle cx="12" cy="12" r="3"></circle>
         <line x1="12" y1="2" x2="12" y2="6"></line>
@@ -20,23 +20,42 @@
         <line x1="18" y1="12" x2="22" y2="12"></line>
       </svg>
     </button>
+    <button id="snake-btn" title="贪吃蛇" aria-label="贪吃蛇">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 20 C4 20 4 16 8 16 C12 16 12 12 8 12 C4 12 4 8 8 8 C12 8 16 8 16 4"></path>
+        <circle cx="17" cy="3" r="1" fill="currentColor"></circle>
+      </svg>
+    </button>
   </div>
 
   <div class="top-bar">
-    <button id="todo-btn" title="待办事项">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <button id="theme-btn" title="切换主题" aria-label="切换主题">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    </button>
+    <button id="todo-btn" title="待办事项" aria-label="待办事项">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M9 11l3 3L22 4"></path>
         <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
       </svg>
     </button>
-    <button id="settings-btn" title="设置">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <button id="settings-btn" title="设置" aria-label="设置">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="3"></circle>
         <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
       </svg>
     </button>
-    <button id="bg-change-btn" title="更换背景图片">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <button id="bg-change-btn" title="更换背景图片" aria-label="更换背景图片">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
         <circle cx="8.5" cy="8.5" r="1.5"></circle>
         <polyline points="21 15 16 10 5 21"></polyline>
@@ -83,10 +102,6 @@
     </div>
 
     <div class="search-section glass">
-      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
       <div class="engine-selector">
         <span id="engine-label">必应</span>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -95,8 +110,8 @@
       </div>
       <div id="engine-dropdown" class="engine-dropdown glass hidden"></div>
       <input type="text" id="search-input" placeholder="在必应上搜索" autocomplete="off">
-      <button id="search-btn" title="搜索">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <button id="search-btn" title="搜索" aria-label="搜索">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"></line>
           <polyline points="12 5 19 12 12 19"></polyline>
         </svg>
@@ -154,7 +169,7 @@
       <div class="game-header">
         <h3>五子棋</h3>
         <div class="game-status" id="game-status">你的回合</div>
-        <button id="game-close" class="game-close">&times;</button>
+        <button id="game-close" class="game-close" aria-label="关闭">&times;</button>
       </div>
       <div class="game-board-wrapper">
         <canvas id="game-canvas" width="450" height="450"></canvas>
@@ -173,10 +188,32 @@
     </div>
   </div>
 
+  <div id="snake-modal" class="game-modal hidden">
+    <div class="game-modal-inner glass">
+      <div class="game-header">
+        <h3>贪吃蛇</h3>
+        <div class="game-status" id="snake-status">方向键控制移动</div>
+        <button id="snake-close" class="game-close" aria-label="关闭">&times;</button>
+      </div>
+      <div class="game-board-wrapper">
+        <canvas id="snake-canvas" width="450" height="450"></canvas>
+      </div>
+      <div class="game-footer">
+        <div class="game-score">
+          <span id="snake-score-current">得分: 0</span>
+          <span id="snake-score-high">最高分: 0</span>
+        </div>
+        <div class="game-actions">
+          <button id="snake-restart" class="game-action-btn">重新开始</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="todo-panel" class="todo-panel glass hidden">
     <div class="todo-panel-header">
       <h3>待办事项</h3>
-      <button id="todo-close" class="todo-close">&times;</button>
+      <button id="todo-close" class="todo-close" aria-label="关闭">&times;</button>
     </div>
     <div class="todo-input-row">
       <input type="text" id="todo-input" placeholder="添加新待办..." autocomplete="off">
