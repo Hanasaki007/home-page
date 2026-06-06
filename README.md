@@ -1,6 +1,6 @@
 # 清新新标签页
 
-一款 Chrome 浏览器扩展，替换默认新标签页，提供简洁大方的毛玻璃（Glassmorphism）风格界面。
+一款 Chrome 浏览器扩展，替换默认新标签页，提供简洁大方的毛玻璃风格界面。
 
 ## 功能特性
 
@@ -14,22 +14,6 @@
 - **高性能模式** — 关闭毛玻璃模糊与动画，适配低性能设备
 - **数据持久化** — 通过 `chrome.storage` API 保存所有用户数据
 
-## 项目结构
-
-```
-home-page/
-├── manifest.json          # 扩展配置（Manifest V3）
-├── newtab.html            # 新标签页主页面
-├── css/
-│   └── style.css          # 样式（毛玻璃风格）
-├── js/
-│   └── script.js          # 全部交互逻辑
-└── icons/
-    ├── icon16.png
-    ├── icon48.png
-    └── icon128.png
-```
-
 ## 安装与使用
 
 1. 打开 Chrome 浏览器，进入 `chrome://extensions/`
@@ -37,10 +21,3 @@ home-page/
 3. 点击「加载已解压的扩展程序」
 4. 选择本项目文件夹
 5. 打开新标签页即可使用
-
-## 技术栈
-
-- HTML / CSS / JavaScript
-- Manifest V3
-- Canvas API
-- `chrome.storage` API + `localStorage` 回退
