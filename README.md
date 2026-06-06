@@ -40,7 +40,7 @@ home-page/
 
 ## 技术栈
 
-- HTML / CSS / JavaScript（原生，无框架依赖）
+- HTML / CSS / JavaScript
 - Manifest V3
-- Canvas API（五子棋棋盘渲染）
+- Canvas API
 - `chrome.storage` API + `localStorage` 回退
