@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新标签页</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="background"></div>
+
+  <div class="top-bar">
+    <button id="bg-change-btn" title="更换背景图片">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+        <polyline points="21 15 16 10 5 21"></polyline>
+      </svg>
+    </button>
+    <input type="file" id="bg-file-input" accept="image/*" hidden>
+  </div>
+
+  <div class="main-container">
+    <div class="clock-section">
+      <div id="time-display" class="time">00:00:00</div>
+      <div id="date-display" class="date"></div>
+    </div>
+
+    <div class="search-section glass">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="search-input" placeholder="在必应上搜索" autocomplete="off">
+      <button id="search-btn" title="搜索">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <div class="bookmarks-section">
+      <div id="bookmarks-grid" class="bookmarks-grid"></div>
+      <button id="add-bookmark-btn" class="bookmark-card add-card glass" title="添加快捷网址">
+        <div class="add-icon">+</div>
+        <span class="bookmark-label">添加</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal glass">
+      <h3>添加快捷网址</h3>
+      <div class="modal-field">
+        <label for="bm-title-input">名称</label>
+        <input type="text" id="bm-title-input" placeholder="例如：GitHub">
+      </div>
+      <div class="modal-field">
+        <label for="bm-url-input">网址</label>
+        <input type="url" id="bm-url-input" placeholder="例如：https://github.com">
+      </div>
+      <div class="modal-actions">
+        <button id="modal-cancel" class="modal-btn btn-cancel">取消</button>
+        <button id="modal-confirm" class="modal-btn btn-confirm">添加</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="bg-context-menu" class="context-menu glass hidden">
+    <div class="context-menu-item" data-action="change">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+        <polyline points="21 15 16 10 5 21"></polyline>
+      </svg>
+      更换背景图片
+    </div>
+    <div class="context-menu-item" data-action="reset">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="1 4 1 10 7 10"></polyline>
+        <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+      </svg>
+      恢复默认背景
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "清新新标签页",
+  "version": "1.0.0",
+  "description": "替换浏览器默认新标签页，提供简洁大方的毛玻璃风格界面，支持自定义背景和快捷网址。",
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "permissions": [
+    "storage",
+    "unlimitedStorage"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
