@@ -38,7 +38,8 @@
         chrome.storage.local.get(keys, resolve);
       } else {
         const result = {};
-        keys.forEach((k) => {
+        const keysArray = Array.isArray(keys) ? keys : [keys];
+        keysArray.forEach((k) => {
           const v = localStorage.getItem(k);
           result[k] = v ? JSON.parse(v) : undefined;
         });
@@ -165,7 +166,9 @@
   function applyBackground(imgDataUrl) {
     const el = $('#background');
     if (imgDataUrl) {
-      el.style.backgroundImage = `url(${imgDataUrl})`;
+      // 转义特殊字符，防止CSS注入
+      const escapedUrl = imgDataUrl.replace(/['"()]/g, '\\$&');
+      el.style.backgroundImage = `url(${escapedUrl})`;
       el.style.backgroundSize = 'cover';
       el.style.backgroundPosition = 'center';
       el.classList.add('has-image');
@@ -228,7 +231,9 @@
       bgImage = dataUrl;
       applyBackground(dataUrl);
       await storageSet({ backgroundImage: dataUrl });
-    } catch {}
+    } catch (error) {
+      console.error('背景图片上传失败:', error);
+    }
   }
 
   $('#bg-change-btn').addEventListener('click', (e) => {
@@ -346,7 +351,8 @@
     a.href = url;
     a.download = 'bookmarks.json';
     a.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    // 增加超时时间到5秒，确保下载完成后再撤销URL
+    setTimeout(() => URL.revokeObjectURL(url), 5000);
   }
 
   $('#import-file-input').addEventListener('change', async (e) => {
@@ -359,7 +365,9 @@
       bookmarks = data;
       renderBookmarks();
       await storageSet({ bookmarks });
-    } catch {}
+    } catch (error) {
+      console.error('书签导入失败:', error);
+    }
     e.target.value = '';
   });
 
@@ -460,6 +468,9 @@
   function renderBookmarks() {
     const grid = $('#bookmarks-grid');
     grid.innerHTML = '';
+    
+    // 使用DocumentFragment批量添加DOM节点，减少重排次数
+    const fragment = document.createDocumentFragment();
 
     bookmarks.forEach((bm) => {
       const card = document.createElement('a');
@@ -524,8 +535,10 @@
         await storageSet({ bookmarks });
       });
 
-      grid.appendChild(card);
+      fragment.appendChild(card);
     });
+    
+    grid.appendChild(fragment);
   }
 
   // ── Bookmark Drag & Drop ──

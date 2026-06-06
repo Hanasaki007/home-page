@@ -436,9 +436,10 @@ body::-webkit-scrollbar-thumb:hover {
 .bookmark-actions {
   position: absolute;
   top: 4px;
+  left: 4px;
   right: 4px;
   display: flex;
-  gap: 2px;
+  justify-content: space-between;
   opacity: 0;
   transform: scale(0.8);
   transition: var(--transition);
@@ -483,7 +484,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .add-card {
-  border: 2px dashed rgba(255, 255, 255, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.25);
   background: transparent;
   backdrop-filter: none;
   box-shadow: none;
@@ -498,7 +499,7 @@ body::-webkit-scrollbar-thumb:hover {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -718,6 +719,8 @@ body::-webkit-scrollbar-thumb:hover {
   justify-content: center;
   animation: fadeIn 0.2s ease-out;
   overscroll-behavior: contain;
+  overflow: auto;
+  padding: 20px;
 }
 
 .game-modal.hidden {
@@ -1126,12 +1129,21 @@ body::-webkit-scrollbar-thumb:hover {
 
 /* ── High Performance Mode ── */
 
+/* Disable backdrop-filter (blur) for all glass-like elements */
 body.high-performance .glass {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   background: rgba(255, 255, 255, 0.18);
+  box-shadow: none;
 }
 
+body.high-performance .top-bar button,
+body.high-performance .top-left-bar button {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Disable animations */
 body.high-performance #background {
   animation: none;
   filter: none;
@@ -1143,6 +1155,52 @@ body.high-performance .main-container > .bookmarks-section {
   animation: none;
 }
 
+body.high-performance .modal-overlay,
+body.high-performance .game-modal,
+body.high-performance .game-modal-inner {
+  animation: none;
+}
+
+body.high-performance .settings-dropdown,
+body.high-performance .engine-dropdown,
+body.high-performance .context-menu,
+body.high-performance .modal {
+  animation: none;
+}
+
+/* Disable transitions */
+body.high-performance .bookmark-card,
+body.high-performance .top-bar button,
+body.high-performance .top-left-bar button,
+body.high-performance .search-section,
+body.high-performance .settings-dropdown-item,
+body.high-performance .context-menu-item,
+body.high-performance .modal-btn,
+body.high-performance .game-action-btn,
+body.high-performance .todo-input-row button,
+body.high-performance .engine-selector,
+body.high-performance .game-status,
+body.high-performance .todo-panel {
+  transition: none;
+}
+
+/* Disable hover transforms */
+body.high-performance .bookmark-card:hover,
+body.high-performance .top-bar button:hover,
+body.high-performance .top-left-bar button:hover {
+  transform: none;
+}
+
+/* Disable box-shadows and text-shadows */
+body.high-performance .bookmark-card:hover {
+  box-shadow: none;
+}
+
+body.high-performance .time {
+  text-shadow: none;
+}
+
+/* Override modal backgrounds for better performance */
 body.high-performance .modal-overlay {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
@@ -1169,38 +1227,6 @@ body.high-performance .todo-panel:not(.hidden) {
   background: rgba(30, 25, 50, 0.92);
 }
 
-body.high-performance .todo-panel.hidden {
-  transition: none;
-}
-
-body.high-performance .bookmark-card,
-body.high-performance .top-bar button,
-body.high-performance .top-left-bar button,
-body.high-performance .search-section,
-body.high-performance .settings-dropdown-item,
-body.high-performance .context-menu-item,
-body.high-performance .modal-btn,
-body.high-performance .game-action-btn,
-body.high-performance .todo-input-row button {
-  transition: none;
-}
-
-body.high-performance .bookmark-card:hover {
-  transform: none;
-}
-
-body.high-performance .top-bar button:hover,
-body.high-performance .top-left-bar button:hover {
-  transform: none;
-}
-
-body.high-performance .settings-dropdown,
-body.high-performance .engine-dropdown,
-body.high-performance .context-menu,
-body.high-performance .modal {
-  animation: none;
-}
-
 body.high-performance .bookmark-actions {
   transition: none;
 }
@@ -1211,6 +1237,27 @@ body.high-performance .bookmark-actions {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .bookmark-card {
+    width: 90px;
+    padding: 14px 8px;
+  }
+
+  .favicon-wrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .favicon-wrapper img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .search-section {
+    width: min(500px, 85vw);
   }
 }
 
@@ -1232,5 +1279,62 @@ body.high-performance .bookmark-actions {
 
   .modal {
     padding: 24px;
+  }
+
+  /* 游戏模态框移动端优化 */
+  .game-modal-inner {
+    width: min(400px, 95vw);
+    padding: 16px;
+    margin: 10px;
+  }
+
+  .game-header {
+    margin-bottom: 12px;
+  }
+
+  .game-header h3 {
+    font-size: 16px;
+  }
+
+  .game-status {
+    font-size: 12px;
+  }
+
+  .game-status.win,
+  .game-status.lose,
+  .game-status.draw {
+    font-size: 13px;
+  }
+
+  .game-close {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+
+  .game-board-wrapper {
+    border-width: 1px;
+  }
+
+  .game-footer {
+    margin-top: 12px;
+    gap: 8px;
+  }
+
+  .game-score {
+    gap: 12px;
+    font-size: 12px;
+  }
+
+  .game-action-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  /* 贪吃蛇画布自适应 */
+  #snake-canvas,
+  #game-canvas {
+    max-width: 100%;
+    height: auto;
   }
 }
