@@ -9,7 +9,32 @@
 <body>
   <div id="background"></div>
 
+  <div class="top-left-bar">
+    <button id="game-btn" title="五子棋">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <circle cx="12" cy="12" r="3"></circle>
+        <line x1="12" y1="2" x2="12" y2="6"></line>
+        <line x1="12" y1="18" x2="12" y2="22"></line>
+        <line x1="2" y1="12" x2="6" y2="12"></line>
+        <line x1="18" y1="12" x2="22" y2="12"></line>
+      </svg>
+    </button>
+  </div>
+
   <div class="top-bar">
+    <button id="todo-btn" title="待办事项">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 11l3 3L22 4"></path>
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+      </svg>
+    </button>
+    <button id="settings-btn" title="设置">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+      </svg>
+    </button>
     <button id="bg-change-btn" title="更换背景图片">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -19,10 +44,41 @@
     </button>
     <input type="file" id="bg-file-input" accept="image/*" hidden>
   </div>
+  <div id="settings-dropdown" class="settings-dropdown glass hidden">
+    <div class="settings-dropdown-item" data-action="export">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      导出书签
+    </div>
+    <div class="settings-dropdown-item" data-action="import">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="17 8 12 3 7 8"></polyline>
+        <line x1="12" y1="3" x2="12" y2="15"></line>
+      </svg>
+      导入书签
+    </div>
+    <div class="settings-dropdown-divider"></div>
+    <div class="settings-dropdown-item settings-toggle-item" data-action="high-perf">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+      </svg>
+      高性能模式
+      <label class="toggle-switch">
+        <input type="checkbox" id="high-perf-toggle">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+  <input type="file" id="import-file-input" accept=".json" hidden>
 
   <div class="main-container">
     <div class="clock-section">
-      <div id="time-display" class="time">00:00:00</div>
+      <div id="greeting-display" class="greeting"></div>
+      <div id="time-display" class="time">00:00</div>
       <div id="date-display" class="date"></div>
     </div>
 
@@ -31,6 +87,13 @@
         <circle cx="11" cy="11" r="8"></circle>
         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
       </svg>
+      <div class="engine-selector">
+        <span id="engine-label">必应</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+      <div id="engine-dropdown" class="engine-dropdown glass hidden"></div>
       <input type="text" id="search-input" placeholder="在必应上搜索" autocomplete="off">
       <button id="search-btn" title="搜索">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -51,7 +114,8 @@
 
   <div id="modal-overlay" class="modal-overlay hidden">
     <div class="modal glass">
-      <h3>添加快捷网址</h3>
+      <h3 id="modal-title">添加快捷网址</h3>
+      <input type="hidden" id="bm-edit-id">
       <div class="modal-field">
         <label for="bm-title-input">名称</label>
         <input type="text" id="bm-title-input" placeholder="例如：GitHub">
@@ -83,6 +147,42 @@
       </svg>
       恢复默认背景
     </div>
+  </div>
+
+  <div id="game-modal" class="game-modal hidden">
+    <div class="game-modal-inner glass">
+      <div class="game-header">
+        <h3>五子棋</h3>
+        <div class="game-status" id="game-status">你的回合</div>
+        <button id="game-close" class="game-close">&times;</button>
+      </div>
+      <div class="game-board-wrapper">
+        <canvas id="game-canvas" width="450" height="450"></canvas>
+      </div>
+      <div class="game-footer">
+        <div class="game-score">
+          <span id="game-score-you">你: 0</span>
+          <span id="game-score-ai">AI: 0</span>
+          <span id="game-score-draw">平局: 0</span>
+        </div>
+        <div class="game-actions">
+          <button id="game-restart" class="game-action-btn">重新开始</button>
+          <button id="game-undo" class="game-action-btn">悔棋</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="todo-panel" class="todo-panel glass hidden">
+    <div class="todo-panel-header">
+      <h3>待办事项</h3>
+      <button id="todo-close" class="todo-close">&times;</button>
+    </div>
+    <div class="todo-input-row">
+      <input type="text" id="todo-input" placeholder="添加新待办..." autocomplete="off">
+      <button id="todo-add-btn">+</button>
+    </div>
+    <div id="todo-list" class="todo-list"></div>
   </div>
 
   <script src="js/script.js"></script>
