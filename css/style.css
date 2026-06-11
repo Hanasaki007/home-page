@@ -484,14 +484,12 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .add-card {
-  border: 2px solid rgba(255, 255, 255, 0.25);
   background: transparent;
   backdrop-filter: none;
   box-shadow: none;
 }
 
 .add-card:hover {
-  border-color: rgba(255, 255, 255, 0.5);
   background: rgba(255, 255, 255, 0.08);
 }
 

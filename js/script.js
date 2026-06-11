@@ -238,7 +238,12 @@
 
   $('#bg-change-btn').addEventListener('click', (e) => {
     e.stopPropagation();
-    showContextMenu();
+    const menu = $('#bg-context-menu');
+    if (menu.classList.contains('hidden')) {
+      showContextMenu();
+    } else {
+      hideContextMenu();
+    }
   });
 
   function showContextMenu() {
